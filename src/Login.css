@@ -1,0 +1,108 @@
+body {
+  font-family: arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  font-size: 15px;
+  background-color: hsl(150, 20%, 95%);
+}
+
+form {
+  background-color: hsl(0, 0%, 100%);
+  border: 2px solid;
+  border-radius: 10px;
+  padding: 50px 50px;
+  padding-top: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  box-shadow:
+    0px 4px 6px hsla(0, 0%, 0%, 0.7),
+    0px 4px 16px hsla(0, 0%, 0%, 0.1);
+  text-align: center;
+  opacity: 70%;
+  color: hsl(38, 15%, 20%);
+}
+
+.user-pass {
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+  /* flex chỉ tác dụng vào đến thẻ con trực tiếp */
+}
+
+input[type="password"],
+input[type="text"] {
+  font-size: 25px;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  background-color: hsl(38, 40%, 98%);
+  outline: none;
+  box-shadow:
+    inset 2px 3px 5px hsl(38, 20%, 75%),
+    inset -2px -2px 4px hsl(0, 0%, 100%);
+  padding: 12px;
+  color: hsl(38, 15%, 20%);
+}
+input[type="password"]:focus,
+input[type="text"]:focus {
+  box-shadow:
+    inset 3px 3px 6px hsl(38, 20%, 75%),
+    inset -2px -2px 4px hsl(0, 0%, 100%);
+  background-color: hsl(38, 40%, 98%);
+}
+
+button {
+  background: linear-gradient(180deg, hsl(217, 90%, 68%) 0%, hsl(217, 85%, 58%) 100%);
+  color: hsl(0, 0%, 100%);
+  border: none;
+  border-radius: 10px;
+  padding: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  font-weight: bold;
+  box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+button:hover {
+  transform: translateY(-1px);
+  box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+button:active {
+  transform: translateY(1px);
+  box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+h1 {
+  font-size: 45px;
+}
+
+#submit {
+  font-size: 18px;
+}
+
+.checkbox-container {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  padding: 10px 0px;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+}
+
+#forgot-pass {
+  padding-left: 90px;
+}
+
+.register {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}

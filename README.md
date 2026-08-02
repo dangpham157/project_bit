@@ -15,8 +15,8 @@ Dự án xây dựng một ứng dụng nhỏ gọn giúp sinh viên đăng ký 
 
 ## 🛠 Công nghệ sử dụng
 
-- **Ngôn ngữ:** C++
-- **Giao diện:** Dear ImGui
+- **Ngôn ngữ:** PHP
+- **Giao diện:** HTML/CSS
 - **Cơ sở dữ liệu:** MySQL
 
 ---
