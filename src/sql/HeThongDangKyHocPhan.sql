@@ -1,0 +1,74 @@
+CREATE DATABASE HeThongDangKy;
+USE HeThongDangKy;
+
+CREATE TABLE Role (
+	Role_ID INT PRIMARY KEY,
+	Quyen NVARCHAR(50) NOT NULL
+);
+
+CREATE TABLE HocPhan (
+	Ma_HP CHAR(255) PRIMARY KEY,
+	Ten_HP NVARCHAR(255) DEFAULT 'Chua_cap_nhat',
+	STC INT NOT NULL
+);
+
+CREATE TABLE GiangVien (
+	ID_GiangVien CHAR(255) PRIMARY KEY,
+	Ten_GiangVien NVARCHAR(255) DEFAULT 'Chua_cap_nhat'
+);
+
+CREATE TABLE Account (
+	Username CHAR(255) PRIMARY KEY,
+	Password CHAR(255) NOT NULL,
+	Role_ID INT,
+	CONSTRAINT quyen_link
+	FOREIGN KEY (Role_ID)
+	REFERENCES Role(Role_ID)
+);
+
+CREATE TABLE SinhVien (
+	MSV CHAR(255) PRIMARY KEY,
+	Ten NVARCHAR(255) DEFAULT 'Chua_cap_nhat',
+	Khoa CHAR(10) DEFAULT 0,
+	Lop CHAR(255) DEFAULT 'Chua_cap_nhat',
+	Username CHAR(255),
+	CONSTRAINT tk_link
+	FOREIGN KEY (Username)
+	REFERENCES Account(Username)
+);
+
+CREATE TABLE LopHocPhan (
+	Ma_LHP CHAR(255) PRIMARY KEY,
+	Ma_HP CHAR(255),
+	SoLuong INT DEFAULT 0,
+	TinhTrang NVARCHAR(20) DEFAULT 'Chua_cap_nhat',
+	CONSTRAINT hp_link
+	FOREIGN KEY (Ma_HP)
+	REFERENCES HocPhan(Ma_HP)
+);
+
+CREATE TABLE ThoiGianHoc (
+	ID_tg CHAR(255) PRIMARY KEY,
+	Ma_LHP CHAR(255),
+	Tuan INT DEFAULT 0,
+	Thu INT DEFAULT 0,
+	Ca INT DEFAULT 0,
+	ID_GiangVien CHAR(255),
+	PhongHoc CHAR(50) DEFAULT 'Chua_cap_nhat',
+	CONSTRAINT lhp_link
+	FOREIGN KEY (Ma_LHP)
+	REFERENCES LopHocPhan(Ma_LHP),
+	CONSTRAINT gv_link
+	FOREIGN KEY (ID_GiangVien)
+	REFERENCES GiangVien(ID_GiangVien)
+);
+
+CREATE TABLE DangKyHocPhan (
+	MSV CHAR(255),
+	Ma_LHP CHAR(255),
+	NgayDangKy DATE DEFAULT 0,
+	TinhTrang NVARCHAR(255) DEFAULT 'Chua_cap_nhat',
+	PRIMARY KEY (MSV, Ma_LHP),
+	CONSTRAINT dkmsv_link FOREIGN KEY (MSV) REFERENCES SinhVien(MSV),
+	CONSTRAINT dklhp_link FOREIGN KEY (Ma_LHP) REFERENCES LopHocPhan(Ma_LHP)
+);
