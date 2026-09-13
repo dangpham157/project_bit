@@ -43,3 +43,6 @@ Dự án xây dựng một ứng dụng nhỏ gọn giúp sinh viên đăng ký 
 
 - **Lưu dữ liệu:** Tắt app bật lại không bị mất lịch sử đăng ký
 - **Dễ dùng:** Giao diện nút bấm rõ ràng
+
+**npm install express mysql2 bcrypt express-session cors: cài các thư viện cần thiết
+**npm init -y tạo package.json

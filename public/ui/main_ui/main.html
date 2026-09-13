@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Đăng ký học phần | Cổng sinh viên</title>
+    <!-- FontAwesome cung cấp các icon qua thẻ i-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <!-- Font Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="main.css" />
+  </head>
+  <body>
+    <!-- SIDEBAR BÊN TRÁI -->
+    <aside class="sidebar">
+      <div class="sidebar-brand">
+        <img src="../../res/img/logo.png" alt="" width="50px" height="auto" />
+        <div class="brand_text">
+          <p class="Main_text">HỌC VIỆN NGÂN HÀNG</p>
+          <p class="sub_text">BANKING ACADEMY OF VIETNAM</p>
+        </div>
+      </div>
+
+      <ul class="sidebar-menu">
+        <li>
+          <a href="#" class="active"><i class="fa-solid fa-pen-to-square"></i> Đăng ký học phần</a>
+        </li>
+        <li>
+          <a href="../Tracuu_ui/tracuu.html"><i class="fa-solid fa-magnifying-glass"></i> Tra cứu học phần</a>
+        </li>
+        <li>
+          <a href="../CTDT_ui/ctdt.html"><i class="fa-solid fa-book-open"></i> Chương trình đào tạo</a>
+        </li>
+        <li style="margin-top: 30px; border-top: 1px solid rgba(255, 255, 255, 0.1); padding-top: 10px">
+          <a href="../TTCN_ui/ttcn.html"><i class="fa-solid fa-user-gear"></i> Tài khoản cá nhân</a>
+        </li>
+        <li>
+          <a href="../login_ui/login.html"><i class="fa-solid fa-right-from-bracket"></i> Đăng xuất</a>
+        </li>
+      </ul>
+    </aside>
+
+    <!-- NỘI DUNG CHÍNH BÊN PHẢI -->
+    <main class="main-content">
+      <!-- THANH TOPBAR -->
+      <header class="topbar">
+        <div class="page-title">Đăng ký học phần - Học kỳ 1 (2026 - 2027)</div>
+        <div class="topbar-right">
+          <div class="user-profile">
+            <div class="user-info" id="user_info">
+              <span class="id">28A4042280</span>
+              <span class="divider">|</span>
+              <span class="name">Nguyễn Thành Trung</span>
+            </div>
+            <i class="fa-solid fa-chevron-down" style="font-size: 12px; color: #6b7280"></i>
+          </div>
+        </div>
+      </header>
+
+      <!-- KHU VỰC THAO TÁC ĐĂNG KÝ -->
+      <section class="workspace">
+        <!-- KHỐI 1: DANH SÁCH MÔN ĐĂNG KÝ -->
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">Danh sách Lớp học phần mở đăng ký</h3>
+          </div>
+          <div class="card-body">
+            <div class="filter-bar">
+              <select>
+                <option>Tất cả khoa</option>
+                <option>Khoa Công nghệ thông tin & Kinh tế số</option>
+                <option>Khoa kinh tế</option>
+              </select>
+              <select>
+                <option>Lọc theo loại</option>
+                <option>Theo chương trình học</option>
+                <option>Ngoài trương trình học</option>
+              </select>
+              <input type="text" placeholder="Nhập mã môn hoặc tên môn để tìm..." />
+            </div>
+
+            <div class="table-responsive">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Mã LHP</th>
+                    <th>Tên học phần</th>
+                    <th>TC</th>
+                    <th>Lịch học</th>
+                    <th>SLĐK</th>
+                    <th>Thao tác</th>
+                  </tr>
+                </thead>
+                <tbody id="classList"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- KHỐI 2:KẾT QUẢ ĐÃ ĐĂNG KÝ -->
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">Kết quả đăng ký</h3>
+            <div style="font-size: 14px; font-weight: 600; color: var(--primary-blue)">
+              Tổng số tín chỉ: <span style="color: var(--danger); font-size: 16px"></span>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Mã LHP</th>
+                    <th>Tên học phần</th>
+                    <th>TC</th>
+                    <th>Giảng viên</th>
+                    <th>Lịch học</th>
+                    <th>Trạng thái</th>
+                    <th>Thao tác</th>
+                  </tr>
+                </thead>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <script src="../js/thaotac_user.js"></script>
+  </body>
+</html>

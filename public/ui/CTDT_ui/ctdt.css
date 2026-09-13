@@ -1,0 +1,241 @@
+:root {
+  --primary-blue: #1a365d;
+  --primary-hover: #2b4c7e;
+  --accent-gold: #f59e0b;
+  --text-main: #333333;
+  --text-light: #6b7280;
+  --bg-main: #f3f4f6;
+  --bg-white: #ffffff;
+  --border-color: #e5e7eb;
+  --success: #10b981;
+  --warning: #f59e0b;
+  --danger: #ef4444;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Inter", sans-serif;
+}
+
+body {
+  background-color: var(--bg-main);
+  color: var(--text-main);
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* ================= SIDEBAR & TOPBAR ================= */
+.sidebar {
+  width: 220px;
+  background-color: var(--primary-blue);
+  color: white;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar-brand {
+  padding: 20px 15px;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--accent-gold);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+
+  & .brand_text {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+
+  & .sub_text {
+    font-size: 10px;
+  }
+
+  & p {
+    margin: 0;
+    line-height: 1.2;
+  }
+}
+
+.sidebar-menu {
+  list-style: none;
+  padding: 15px 10px;
+  flex: 1;
+  overflow-y: auto;
+}
+
+.sidebar-menu li {
+  margin-bottom: 5px;
+}
+
+.sidebar-menu a {
+  color: #d1d5db;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  padding: 10px 12px;
+  border-radius: 6px;
+  font-size: 13px;
+  transition: all 0.2s;
+}
+
+.sidebar-menu a i {
+  width: 20px;
+  font-size: 14px;
+  margin-right: 8px;
+}
+
+.sidebar-menu a:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: white;
+}
+
+.sidebar-menu a.active {
+  background-color: var(--accent-gold);
+  color: var(--primary-blue);
+  font-weight: 600;
+}
+
+.main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.topbar {
+  height: 60px;
+  background-color: var(--bg-white);
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 25px;
+}
+
+.page-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--primary-blue);
+}
+
+.topbar-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.user-profile {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.user-profile:hover {
+  color: var(--primary-hover);
+}
+
+.user-info {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+}
+.user-info .name {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.user-info .id {
+  font-size: 14px;
+}
+
+/* ================= WORKSPACE & CARD ================= */
+.workspace {
+  padding: 20px;
+  overflow-y: auto;
+  flex: 1;
+}
+
+.card {
+  background-color: var(--bg-white);
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  margin-bottom: 20px;
+  border: 1px solid var(--border-color);
+}
+
+.card-header {
+  padding: 15px 20px;
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--primary-blue);
+}
+
+.card-body {
+  padding: 20px;
+}
+
+/* Thống kê tiến độ */
+.progress-summary {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.summary-item {
+  background: #f8fafc;
+  padding: 12px 16px;
+  border-radius: 6px;
+  border-left: 4px solid var(--primary-blue);
+}
+
+.summary-item .label {
+  font-size: 12px;
+  color: var(--text-light);
+}
+
+.summary-item .value {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--primary-blue);
+  margin-top: 4px;
+}
+
+/* ================= BẢNG DỮ LIỆU CHƯƠNG TRÌNH ĐÀO TẠO ================= */
+.table-responsive {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+th,
+td {
+  padding: 10px 12px;
+  text-align: center;
+  border: 1px solid var(--border-color);
+}
+
+th {
+  background-color: #f8fafc;
+  color: var(--primary-blue);
+  font-weight: 600;
+}

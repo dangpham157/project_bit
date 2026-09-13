@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tra cứu học phần</title>
+    <!-- FontAwesome cho Icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <!-- Font Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="tracuu.css" />
+  </head>
+  <body>
+    <!-- SIDEBAR BÊN TRÁI -->
+    <aside class="sidebar">
+      <div class="sidebar-brand">
+        <img src="../../res/img/logo.png" alt="" width="50px" height="auto" />
+        <div class="brand_text">
+          <p class="Main_text">HỌC VIỆN NGÂN HÀNG</p>
+          <p class="sub_text">BANKING ACADEMY OF VIETNAM</p>
+        </div>
+      </div>
+
+      <ul class="sidebar-menu">
+        <!-- Đổi active xuống Tra cứu -->
+        <li>
+          <a href="../main_ui/main.html"><i class="fa-solid fa-pen-to-square"></i> Đăng ký học phần</a>
+        </li>
+        <li>
+          <a href="#" class="active"><i class="fa-solid fa-magnifying-glass"></i> Tra cứu học phần</a>
+        </li>
+        <li>
+          <a href="../CTDT_ui/ctdt.html"><i class="fa-solid fa-book-open"></i> Chương trình đào tạo</a>
+        </li>
+        <li style="margin-top: 30px; border-top: 1px solid rgba(255, 255, 255, 0.1); padding-top: 10px">
+          <a href="../TTCN_ui/ttcn.html"><i class="fa-solid fa-user-gear"></i> Tài khoản cá nhân</a>
+        </li>
+        <li>
+          <a href="../login_ui/login.html"><i class="fa-solid fa-right-from-bracket"></i> Đăng xuất</a>
+        </li>
+      </ul>
+    </aside>
+
+    <!-- NỘI DUNG CHÍNH BÊN PHẢI -->
+    <main class="main-content">
+      <!-- THANH TOPBAR -->
+      <header class="topbar">
+        <div class="page-title">Tra cứu học phần</div>
+        <div class="topbar-right">
+          <div class="user-profile">
+            <div class="user-info" id="user_info">
+              <span class="id">28A4042280</span>
+              <span class="divider">|</span>
+              <span class="name">Nguyễn Thành Trung</span>
+            </div>
+            <i class="fa-solid fa-chevron-down" style="font-size: 12px; color: #6b7280"></i>
+          </div>
+        </div>
+      </header>
+
+      <!-- KHU VỰC THAO TÁC -->
+      <section class="workspace">
+        <!-- KHỐI 1: BỘ LỌC TÌM KIẾM -->
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">Tìm theo</h3>
+          </div>
+          <div class="card-body">
+            <div class="search-form-grid">
+              <div class="form-group">
+                <label for="course-id">Mã học phần</label>
+                <input type="text" id="course-id" placeholder="VD: MAT123..." />
+              </div>
+
+              <div class="form-group">
+                <label for="course-name">Tên học phần</label>
+                <input type="text" id="course-name" placeholder="Lập trình hướng đối tượng..." />
+              </div>
+
+              <div class="form-group">
+                <label for="department">Khoa quản lý</label>
+                <select id="department">
+                  <option>-- Tất cả các Khoa --</option>
+                  <option>Khoa Công nghệ thông tin</option>
+                  <option>Khoa Kinh tế</option>
+                </select>
+              </div>
+
+              <button class="btn-search"><i class="fa-solid fa-magnifying-glass"></i> Tra cứu</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- KHỐI 2: KẾT QUẢ TRA CỨU -->
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">Kết quả tìm kiếm</h3>
+          </div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table>
+                <thead>
+                  <tr>
+                    <th>STT</th>
+                    <th>Mã HP</th>
+                    <th>Tên học phần</th>
+                    <th>Số TC</th>
+                    <th>Loại môn</th>
+                    <th>Thông tin</th>
+                    <th>Giảng viên</th>
+                    <th>Gới hạn</th>
+                    <th>SLĐK</th>
+                    <th>Thời gian</th>
+                  </tr>
+                </thead>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <script src="../js/thaotac_user.js"></script>
+  </body>
+</html>
