@@ -45,6 +45,5 @@ async function loadClasses() {
 }
 
 function registerClass(maLHP) {
-  // Hàm này sẽ gọi API POST lên server để ghi nhận đăng ký
   console.log(`Đang xử lý đăng ký lớp: ${maLHP}`);
 }

@@ -50,14 +50,12 @@ app.post("/api/login", async (req, res) => {
 
     const user = rows[0];
 
-    // So sánh mật khẩu người dùng nhập với chuỗi hash trong cột Password
     const isMatch = await bcrypt.compare(password, user.Password.trim());
 
     if (!isMatch) {
       return res.status(401).json({ success: false, message: "Sai mật khẩu!" });
     }
 
-    // Lưu session với dữ liệu từ bảng account
     req.session.user = {
       studentId: user.Username,
       roleId: user.Role_ID,
@@ -83,7 +81,6 @@ app.get("/api/classes", async (req, res) => {
   try {
     const db = await dbPromise;
 
-    // Câu lệnh SQL JOIN 4 bảng và gộp lịch học
     const query = `
       SELECT 
           lhp.Ma_LHP AS maLHP,
@@ -108,7 +105,7 @@ app.get("/api/classes", async (req, res) => {
       data: rows,
     });
   } catch (error) {
-    console.error("❌ Lỗi lấy danh sách lớp học phần:", error);
+    console.error("Lỗi lấy danh sách lớp học phần:", error);
     res.status(500).json({ success: false, message: "Lỗi truy xuất CSDL!" });
   }
 });
