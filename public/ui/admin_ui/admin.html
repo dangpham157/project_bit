@@ -1,0 +1,296 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quản trị hệ thống | Cổng Admin BAV</title>
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <!-- Font Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="admin.css" />
+  </head>
+  <body>
+    <!-- SIDEBAR BÊN TRÁI -->
+    <aside class="sidebar">
+      <div class="sidebar-brand">
+        <img src="../../res/img/logo.png" alt="Logo BAV" width="45px" height="auto" />
+        <div class="brand_text">
+          <p class="Main_text">HỌC VIỆN NGÂN HÀNG</p>
+          <p class="sub_text">TRANG QUẢN TRỊ VIÊN</p>
+        </div>
+      </div>
+
+      <ul class="sidebar-menu">
+        <li>
+          <a href="javascript:void(0)" class="nav-tab active" data-tab="tab-courses">
+            <i class="fa-solid fa-book-bookmark"></i> Quản lý môn học
+          </a>
+        </li>
+        <li>
+          <a href="javascript:void(0)" class="nav-tab" data-tab="tab-classes">
+            <i class="fa-solid fa-chalkboard-user"></i> Quản lý lớp học phần
+          </a>
+        </li>
+        <li>
+          <a href="../main_ui/main.html" target="_blank">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i> Xem Cổng sinh viên
+          </a>
+        </li>
+        <li style="margin-top: 30px; border-top: 1px solid rgba(255, 255, 255, 0.1); padding-top: 10px">
+          <a href="javascript:void(0)" id="btnAdminLogout">
+            <i class="fa-solid fa-right-from-bracket"></i> Đăng xuất
+          </a>
+        </li>
+      </ul>
+    </aside>
+
+    <!-- NỘI DUNG CHÍNH BÊN PHẢI -->
+    <main class="main-content">
+      <!-- THANH TOPBAR -->
+      <header class="topbar">
+        <div class="page-title" id="pageTitle">Quản trị Môn học & Lớp học phần</div>
+        <div class="topbar-right">
+          <div class="user-profile">
+            <div class="admin-badge"><i class="fa-solid fa-shield-halved"></i> ADMIN</div>
+            <div class="user-info">
+              <span class="id">Tài khoản Quản trị</span>
+              <span class="divider">|</span>
+              <span class="name">Administrator</span>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- KHU VỰC THAO TÁC (WORKSPACE) -->
+      <section class="workspace">
+        <!-- THỐNG KÊ TỔNG QUAN -->
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-icon icon-courses"><i class="fa-solid fa-book"></i></div>
+            <div class="stat-info">
+              <div class="stat-label">Tổng số môn học</div>
+              <div class="stat-value" id="statCourses">0</div>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon icon-classes"><i class="fa-solid fa-graduation-cap"></i></div>
+            <div class="stat-info">
+              <div class="stat-label">Lớp học phần mở</div>
+              <div class="stat-value" id="statClasses">0</div>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon icon-registrations"><i class="fa-solid fa-file-signature"></i></div>
+            <div class="stat-info">
+              <div class="stat-label">Lượt sinh viên đăng ký</div>
+              <div class="stat-value" id="statRegistrations">0</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ================= TAB 1: QUẢN LÝ MÔN HỌC ================= -->
+        <div class="tab-content active" id="tab-courses">
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title">Danh sách Môn học (Học phần)</h3>
+              <button class="btn btn-primary" id="btnOpenAddCourseModal">
+                <i class="fa-solid fa-plus"></i> Thêm môn học mới
+              </button>
+            </div>
+            <div class="card-body">
+              <div class="filter-bar">
+                <input type="text" id="searchCourseAdmin" placeholder="Tìm theo mã hoặc tên môn học..." />
+              </div>
+              <div class="table-responsive">
+                <table>
+                  <thead>
+                    <tr>
+                      <th style="width: 50px">STT</th>
+                      <th>Mã HP</th>
+                      <th>Tên học phần</th>
+                      <th>Số TC</th>
+                      <th>Loại môn</th>
+                      <th>Khoa quản lý</th>
+                      <th>Tiết (LT/TH)</th>
+                      <th>Tiên quyết</th>
+                      <th>Kỳ</th>
+                      <th style="text-align: center; width: 140px">Thao tác</th>
+                    </tr>
+                  </thead>
+                  <tbody id="courseAdminList"></tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ================= TAB 2: QUẢN LÝ LỚP HỌC PHẦN ================= -->
+        <div class="tab-content" id="tab-classes">
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title">Danh sách Lớp học phần mở đăng ký</h3>
+              <button class="btn btn-primary" id="btnOpenAddClassModal">
+                <i class="fa-solid fa-plus"></i> Mở lớp học phần mới
+              </button>
+            </div>
+            <div class="card-body">
+              <div class="filter-bar">
+                <input type="text" id="searchClassAdmin" placeholder="Tìm theo mã lớp hoặc môn học..." />
+              </div>
+              <div class="table-responsive">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Mã LHP</th>
+                      <th>Tên học phần (Mã HP)</th>
+                      <th>Số TC</th>
+                      <th>Sĩ số (Đã ĐK / Tối đa)</th>
+                      <th>Giảng viên</th>
+                      <th>Lịch học</th>
+                      <th>Trạng thái</th>
+                      <th style="text-align: center; width: 100px">Thao tác</th>
+                    </tr>
+                  </thead>
+                  <tbody id="classAdminList"></tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- ================= MODAL: THÊM / SỬA MÔN HỌC ================= -->
+    <div class="modal" id="modalCourse">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 id="modalCourseTitle">Thêm môn học mới</h3>
+          <span class="close-modal" id="closeModalCourse">&times;</span>
+        </div>
+        <form id="formCourse">
+          <input type="hidden" id="courseIsEdit" value="false" />
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="cMaHP">Mã học phần *</label>
+              <input type="text" id="cMaHP" required placeholder="VD: LTW01" />
+            </div>
+            <div class="form-group">
+              <label for="cTenHP">Tên học phần *</label>
+              <input type="text" id="cTenHP" required placeholder="VD: Lập trình Web" />
+            </div>
+            <div class="form-group">
+              <label for="cSTC">Số tín chỉ *</label>
+              <input type="number" id="cSTC" required min="1" max="10" value="3" />
+            </div>
+            <div class="form-group">
+              <label for="cLoaiMon">Loại môn</label>
+              <select id="cLoaiMon">
+                <option value="Bắt buộc">Bắt buộc</option>
+                <option value="Tự chọn">Tự chọn</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="cKhoa">Khoa quản lý</label>
+              <select id="cKhoa">
+                <option value="Khoa Công nghệ thông tin">Khoa Công nghệ thông tin</option>
+                <option value="Khoa Kinh tế">Khoa Kinh tế</option>
+                <option value="Khoa Lý luận chính trị">Khoa Lý luận chính trị</option>
+                <option value="Khoa Toán ứng dụng">Khoa Toán ứng dụng</option>
+                <option value="Khoa Tài chính - Ngân hàng">Khoa Tài chính - Ngân hàng</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="cHocKy">Học kỳ đào tạo</label>
+              <input type="number" id="cHocKy" min="1" max="8" value="1" />
+            </div>
+            <div class="form-group">
+              <label for="cSoTietLT">Tiết Lý thuyết</label>
+              <input type="number" id="cSoTietLT" min="0" value="30" />
+            </div>
+            <div class="form-group">
+              <label for="cSoTietTH">Tiết Thực hành</label>
+              <input type="number" id="cSoTietTH" min="0" value="15" />
+            </div>
+            <div class="form-group" style="grid-column: span 2">
+              <label for="cTienQuyet">Học phần tiên quyết</label>
+              <input type="text" id="cTienQuyet" placeholder="VD: Tin học đại cương hoặc Không" value="Không" />
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" id="btnCancelCourse">Hủy bỏ</button>
+            <button type="submit" class="btn btn-primary" id="btnSaveCourse">Lưu môn học</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- ================= MODAL: MỞ LỚP HỌC PHẦN MỚI ================= -->
+    <div class="modal" id="modalClass">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3>Mở Lớp Học Phần Mới</h3>
+          <span class="close-modal" id="closeModalClass">&times;</span>
+        </div>
+        <form id="formClass">
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="clMaLHP">Mã lớp học phần *</label>
+              <input type="text" id="clMaLHP" required placeholder="VD: LHP_LTW01" />
+            </div>
+            <div class="form-group">
+              <label for="clMaHP">Chọn môn học *</label>
+              <select id="clMaHP" required>
+                <option value="">-- Chọn môn học --</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="clSoLuong">Sĩ số tối đa *</label>
+              <input type="number" id="clSoLuong" required min="10" max="200" value="50" />
+            </div>
+            <div class="form-group">
+              <label for="clGiangVien">Giảng viên giảng dạy</label>
+              <select id="clGiangVien">
+                <option value="">-- Chưa phân công --</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="clThu">Thứ trong tuần</label>
+              <select id="clThu">
+                <option value="2">Thứ 2</option>
+                <option value="3">Thứ 3</option>
+                <option value="4">Thứ 4</option>
+                <option value="5">Thứ 5</option>
+                <option value="6">Thứ 6</option>
+                <option value="7">Thứ 7</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="clCa">Ca học</label>
+              <select id="clCa">
+                <option value="1">Ca 1 (Tiết 1 - 3)</option>
+                <option value="2">Ca 2 (Tiết 4 - 6)</option>
+                <option value="3">Ca 3 (Tiết 7 - 9)</option>
+                <option value="4">Ca 4 (Tiết 10 - 12)</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="clPhongHoc">Phòng học</label>
+              <input type="text" id="clPhongHoc" placeholder="VD: D6-211" value="A1-201" />
+            </div>
+            <div class="form-group">
+              <label for="clTuan">Tuần học</label>
+              <input type="text" id="clTuan" value="1-15" />
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" id="btnCancelClass">Hủy bỏ</button>
+            <button type="submit" class="btn btn-primary">Xác nhận mở lớp</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <script src="admin.js"></script>
+  </body>
+</html>

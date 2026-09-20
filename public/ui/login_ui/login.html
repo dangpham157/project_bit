@@ -22,14 +22,14 @@
           <p>Nhập Mã sinh viên và Mật khẩu của bạn</p>
         </div>
 
-        <form id="loginForm">
-          <!-- Mã sinh viên -->
+        <form id="loginForm" autocomplete="off">
+          <!-- Mã sinh viên hoặc Admin -->
           <div class="input-group">
-            <label class="student-id">Mã sinh viên</label>
+            <label class="student-id">Tài khoản / Mã sinh viên</label>
             <div class="input-wrapper">
               <!-- Icon người dùng -->
               <i class="fa-solid fa-user icon-left"></i>
-              <input type="text" id="student-id" placeholder="Ví dụ: 28A404999" required />
+              <input type="text" id="student-id" placeholder="Mã SV (trung) hoặc admin..." autocomplete="off" required />
             </div>
           </div>
 
@@ -39,7 +39,7 @@
             <div class="input-wrapper">
               <!-- Icon ổ khóa -->
               <i class="fa-solid fa-lock icon-left"></i>
-              <input type="password" id="password" placeholder="Nhập mật khẩu" required />
+              <input type="password" id="password" placeholder="Nhập mật khẩu" autocomplete="new-password" required />
               <!-- Icon con mắt -->
               <i class="fa-solid fa-eye-slash icon-right" id="togglePassword"></i>
             </div>

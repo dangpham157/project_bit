@@ -35,7 +35,7 @@
           <a href="../TTCN_ui/ttcn.html"><i class="fa-solid fa-user-gear"></i> Tài khoản cá nhân</a>
         </li>
         <li>
-          <a href="../login_ui/login.html"><i class="fa-solid fa-right-from-bracket"></i> Đăng xuất</a>
+          <a href="javascript:void(0)" id="btnLogout"><i class="fa-solid fa-right-from-bracket"></i> Đăng xuất</a>
         </li>
       </ul>
     </aside>
@@ -48,9 +48,9 @@
         <div class="topbar-right">
           <div class="user-profile">
             <div class="user-info" id="user_info">
-              <span class="id">28A4042280</span>
+              <span class="id" id="userMsv">28A4042280</span>
               <span class="divider">|</span>
-              <span class="name">Nguyễn Thành Trung</span>
+              <span class="name" id="userName">Nguyễn Thành Trung</span>
             </div>
             <i class="fa-solid fa-chevron-down" style="font-size: 12px; color: #6b7280"></i>
           </div>
@@ -66,17 +66,7 @@
           </div>
           <div class="card-body">
             <div class="filter-bar">
-              <select>
-                <option>Tất cả khoa</option>
-                <option>Khoa Công nghệ thông tin & Kinh tế số</option>
-                <option>Khoa kinh tế</option>
-              </select>
-              <select>
-                <option>Lọc theo loại</option>
-                <option>Theo chương trình học</option>
-                <option>Ngoài trương trình học</option>
-              </select>
-              <input type="text" placeholder="Nhập mã môn hoặc tên môn để tìm..." />
+              <input type="text" id="searchCourse" placeholder="Nhập mã lớp, mã môn hoặc tên môn để tìm nhanh..." />
             </div>
 
             <div class="table-responsive">
@@ -87,7 +77,7 @@
                     <th>Tên học phần</th>
                     <th>TC</th>
                     <th>Lịch học</th>
-                    <th>SLĐK</th>
+                    <th>Sĩ số (Đã ĐK / Tối đa)</th>
                     <th>Thao tác</th>
                   </tr>
                 </thead>
@@ -102,7 +92,7 @@
           <div class="card-header">
             <h3 class="card-title">Kết quả đăng ký</h3>
             <div style="font-size: 14px; font-weight: 600; color: var(--primary-blue)">
-              Tổng số tín chỉ: <span style="color: var(--danger); font-size: 16px"></span>
+              Tổng số tín chỉ: <span id="totalCredits" style="color: var(--danger); font-size: 16px">0</span>
             </div>
           </div>
           <div class="card-body">
@@ -119,6 +109,7 @@
                     <th>Thao tác</th>
                   </tr>
                 </thead>
+                <tbody id="registeredList"></tbody>
               </table>
             </div>
           </div>

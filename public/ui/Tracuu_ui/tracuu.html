@@ -36,7 +36,7 @@
           <a href="../TTCN_ui/ttcn.html"><i class="fa-solid fa-user-gear"></i> Tài khoản cá nhân</a>
         </li>
         <li>
-          <a href="../login_ui/login.html"><i class="fa-solid fa-right-from-bracket"></i> Đăng xuất</a>
+          <a href="javascript:void(0)" id="btnLogout"><i class="fa-solid fa-right-from-bracket"></i> Đăng xuất</a>
         </li>
       </ul>
     </aside>
@@ -49,9 +49,9 @@
         <div class="topbar-right">
           <div class="user-profile">
             <div class="user-info" id="user_info">
-              <span class="id">28A4042280</span>
+              <span class="id" id="userMsv">28A4042280</span>
               <span class="divider">|</span>
-              <span class="name">Nguyễn Thành Trung</span>
+              <span class="name" id="userName">Nguyễn Thành Trung</span>
             </div>
             <i class="fa-solid fa-chevron-down" style="font-size: 12px; color: #6b7280"></i>
           </div>
@@ -80,13 +80,15 @@
               <div class="form-group">
                 <label for="department">Khoa quản lý</label>
                 <select id="department">
-                  <option>-- Tất cả các Khoa --</option>
-                  <option>Khoa Công nghệ thông tin</option>
-                  <option>Khoa Kinh tế</option>
+                  <option value="">-- Tất cả các Khoa --</option>
+                  <option value="Công nghệ thông tin">Khoa Công nghệ thông tin</option>
+                  <option value="Kinh tế">Khoa Kinh tế</option>
+                  <option value="Lý luận chính trị">Khoa Lý luận chính trị</option>
+                  <option value="Toán ứng dụng">Khoa Toán ứng dụng</option>
                 </select>
               </div>
 
-              <button class="btn-search"><i class="fa-solid fa-magnifying-glass"></i> Tra cứu</button>
+              <button class="btn-search" id="btnSearchCourse"><i class="fa-solid fa-magnifying-glass"></i> Tra cứu</button>
             </div>
           </div>
         </div>
@@ -106,13 +108,14 @@
                     <th>Tên học phần</th>
                     <th>Số TC</th>
                     <th>Loại môn</th>
-                    <th>Thông tin</th>
+                    <th>Khoa quản lý</th>
                     <th>Giảng viên</th>
-                    <th>Gới hạn</th>
+                    <th>Giới hạn</th>
                     <th>SLĐK</th>
-                    <th>Thời gian</th>
+                    <th>Thời gian học</th>
                   </tr>
                 </thead>
+                <tbody id="searchResultList"></tbody>
               </table>
             </div>
           </div>

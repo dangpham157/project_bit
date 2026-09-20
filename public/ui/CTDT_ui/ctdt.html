@@ -36,7 +36,7 @@
           <a href="../TTCN_ui/ttcn.html"><i class="fa-solid fa-user-gear"></i> Tài khoản cá nhân</a>
         </li>
         <li>
-          <a href="../login_ui/login.html"><i class="fa-solid fa-right-from-bracket"></i> Đăng xuất</a>
+          <a href="javascript:void(0)" id="btnLogout"><i class="fa-solid fa-right-from-bracket"></i> Đăng xuất</a>
         </li>
       </ul>
     </aside>
@@ -49,9 +49,9 @@
         <div class="topbar-right">
           <div class="user-profile">
             <div class="user-info" id="user_info">
-              <span class="id">28A4042280</span>
+              <span class="id" id="userMsv">28A4042280</span>
               <span class="divider">|</span>
-              <span class="name">Nguyễn Thành Trung</span>
+              <span class="name" id="userName">Nguyễn Thành Trung</span>
             </div>
             <i class="fa-solid fa-chevron-down" style="font-size: 12px; color: #6b7280"></i>
           </div>
@@ -68,7 +68,7 @@
           </div>
           <div class="summary-item" style="border-left-color: var(--success)">
             <div class="label">Tín chỉ đã tích lũy</div>
-            <div class="value">0 / 135 TC</div>
+            <div class="value"><span id="accumulatedCredits">0</span> / 135 TC</div>
           </div>
           <div class="summary-item" style="border-left-color: var(--accent-gold)">
             <div class="label">ĐTB Tích lũy (GPA)</div>
@@ -102,7 +102,7 @@
                     <th style="width: 60px">Thực hành</th>
                   </tr>
                 </thead>
-                <tbody></tbody>
+                <tbody id="curriculumList"></tbody>
               </table>
             </div>
           </div>

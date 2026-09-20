@@ -38,7 +38,9 @@ CREATE TABLE `account` (
 
 LOCK TABLES `account` WRITE;
 /*!40000 ALTER TABLE `account` DISABLE KEYS */;
-INSERT INTO `account` VALUES ('trung','$2b$10$rf6jejjzwHLSe/G8ROxVJ.2zcSrYBuGVzDLY8j8Aps69Bp4mP.6sC',1);
+INSERT INTO `account` VALUES 
+('trung','$2b$10$rf6jejjzwHLSe/G8ROxVJ.2zcSrYBuGVzDLY8j8Aps69Bp4mP.6sC',1),
+('admin','$2b$10$rf6jejjzwHLSe/G8ROxVJ.2zcSrYBuGVzDLY8j8Aps69Bp4mP.6sC',2);
 /*!40000 ALTER TABLE `account` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -105,6 +107,12 @@ CREATE TABLE `hocphan` (
   `Ma_HP` char(255) NOT NULL,
   `Ten_HP` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT 'Chua_cap_nhat',
   `STC` int NOT NULL,
+  `LoaiMon` varchar(50) DEFAULT 'Bắt buộc',
+  `Khoa` varchar(100) DEFAULT 'Khoa Công nghệ thông tin',
+  `SoTiet_LT` int DEFAULT '30',
+  `SoTiet_TH` int DEFAULT '15',
+  `HPTienQuyet` varchar(255) DEFAULT 'Không',
+  `HocKy` int DEFAULT '1',
   PRIMARY KEY (`Ma_HP`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -115,7 +123,15 @@ CREATE TABLE `hocphan` (
 
 LOCK TABLES `hocphan` WRITE;
 /*!40000 ALTER TABLE `hocphan` DISABLE KEYS */;
-INSERT INTO `hocphan` VALUES ('LTNC01','Lập trình nâng cao C++',3),('THML01','Triết học Mác-Lênin',3),('TRR01','Toán rời rạc',3),('XSTK01','Xác suất & Thống kê',3);
+INSERT INTO `hocphan` VALUES 
+('THML01','Triết học Mác-Lênin',3,'Bắt buộc','Khoa Lý luận chính trị',45,0,'Không',1),
+('TRR01','Toán rời rạc',3,'Bắt buộc','Khoa Công nghệ thông tin',30,15,'Không',1),
+('KTVM01','Kinh tế vi mô',3,'Bắt buộc','Khoa Kinh tế',45,0,'Không',1),
+('LTNC01','Lập trình nâng cao C++',3,'Bắt buộc','Khoa Công nghệ thông tin',30,15,'Tin học đại cương',2),
+('XSTK01','Xác suất & Thống kê',3,'Bắt buộc','Khoa Toán ứng dụng',30,15,'Toán cao cấp',2),
+('CSDL01','Cơ sở dữ liệu',3,'Bắt buộc','Khoa Công nghệ thông tin',30,15,'Toán rời rạc',3),
+('CTDL01','Cấu trúc dữ liệu và giải thuật',3,'Bắt buộc','Khoa Công nghệ thông tin',30,15,'Lập trình nâng cao C++',3),
+('MMT01','Mạng máy tính',3,'Tự chọn','Khoa Công nghệ thông tin',30,15,'Kiến trúc máy tính',4);
 /*!40000 ALTER TABLE `hocphan` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -167,7 +183,7 @@ CREATE TABLE `role` (
 
 LOCK TABLES `role` WRITE;
 /*!40000 ALTER TABLE `role` DISABLE KEYS */;
-INSERT INTO `role` VALUES (1,'user');
+INSERT INTO `role` VALUES (1,'user'),(2,'admin');
 /*!40000 ALTER TABLE `role` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -196,6 +212,7 @@ CREATE TABLE `sinhvien` (
 
 LOCK TABLES `sinhvien` WRITE;
 /*!40000 ALTER TABLE `sinhvien` DISABLE KEYS */;
+INSERT INTO `sinhvien` VALUES ('28A4042280','Nguyễn Thành Trung','CNTT','K28CNTTA','trung');
 /*!40000 ALTER TABLE `sinhvien` ENABLE KEYS */;
 UNLOCK TABLES;
 

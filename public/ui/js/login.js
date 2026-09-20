@@ -1,3 +1,25 @@
+// Tự động xóa sạch ô nhập khi tải lại trang (chống trình duyệt autofill)
+window.addEventListener("DOMContentLoaded", () => {
+  const form = document.getElementById("loginForm");
+  if (form) form.reset();
+  const idInput = document.getElementById("student-id");
+  const pwdInput = document.getElementById("password");
+  if (idInput) idInput.value = "";
+  if (pwdInput) pwdInput.value = "";
+});
+
+// Nút ẩn / hiện mật khẩu
+const togglePassword = document.getElementById("togglePassword");
+if (togglePassword) {
+  togglePassword.addEventListener("click", () => {
+    const passwordInput = document.getElementById("password");
+    const isPassword = passwordInput.type === "password";
+    passwordInput.type = isPassword ? "text" : "password";
+    togglePassword.classList.toggle("fa-eye-slash", !isPassword);
+    togglePassword.classList.toggle("fa-eye", isPassword);
+  });
+}
+
 document.getElementById("loginForm").addEventListener("submit", async function (e) {
   e.preventDefault();
 

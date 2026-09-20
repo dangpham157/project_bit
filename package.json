@@ -4,6 +4,8 @@
   "description": "Dự án xây dựng một ứng dụng nhỏ gọn giúp sinh viên đăng ký môn học và Admin quản lý danh sách. Giao diện trực quan bằng đồ họa, dữ liệu lưu trữ tập trung vào cơ sở dữ liệu.",
   "main": "index.js",
   "scripts": {
+    "start": "node backend/src/server.js",
+    "seed": "node backend/src/seed.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

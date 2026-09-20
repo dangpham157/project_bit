@@ -293,3 +293,59 @@ tbody tr:hover {
   color: var(--danger);
   font-weight: 600;
 }
+
+/* Các kiểu nút bấm đăng ký & hủy */
+.btn-register {
+  padding: 6px 14px;
+  background-color: var(--primary-blue);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-register:hover {
+  background-color: var(--primary-hover);
+}
+
+.btn-registered {
+  padding: 6px 14px;
+  background-color: #ecfdf5;
+  color: #059669;
+  border: 1px solid #10b981;
+  border-radius: 4px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: default;
+}
+
+.btn-full {
+  padding: 6px 14px;
+  background-color: #f3f4f6;
+  color: #9ca3af;
+  border: 1px solid #d1d5db;
+  border-radius: 4px;
+  font-size: 13px;
+  cursor: not-allowed;
+}
+
+.btn-cancel {
+  padding: 6px 14px;
+  background-color: #fef2f2;
+  color: #dc2626;
+  border: 1px solid #fca5a5;
+  border-radius: 4px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-cancel:hover {
+  background-color: #dc2626;
+  color: white;
+}
+
